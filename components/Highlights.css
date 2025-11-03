@@ -1,0 +1,275 @@
+/* Highlights Component Styles */
+
+.highlights-section {
+  position: relative;
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%);
+  overflow: hidden;
+}
+
+/* Light Rays Background Animation */
+.highlights-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(255, 255, 255, 0.15), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.highlights-section::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.02) 2px,
+      rgba(255, 255, 255, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.02) 2px,
+      rgba(255, 255, 255, 0.02) 4px
+    );
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  animation: lightRaysRotate 30s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  transform-origin: center center;
+}
+
+@keyframes lightRaysRotate {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.5;
+  }
+}
+
+.highlights-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.highlights-title {
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.highlights-description {
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .highlights-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.highlight-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .highlight-card {
+    padding: 1.5rem;
+  }
+}
+
+.highlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.highlight-card:hover::before {
+  opacity: 1;
+}
+
+.highlight-card:hover {
+  transform: translateY(-0.5rem) scale(1.02);
+  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+}
+
+.highlight-icon-wrapper {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.highlight-icon-wrapper .highlight-icon {
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+}
+
+@media (min-width: 640px) {
+  .highlight-icon-wrapper {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.highlight-card:hover .highlight-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.highlight-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: white;
+}
+
+@media (min-width: 640px) {
+  .highlight-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.highlight-title {
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-description {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.75;
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-glow-effect {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.highlight-card:hover .highlight-glow-effect {
+  opacity: 1;
+}
+
+/* Gradient Colors - Red & White Theme */
+.highlight-gradient-purple {
+  background: linear-gradient(135deg, #ffffff 0%, #fee2e2 100%);
+}
+
+.highlight-gradient-blue {
+  background: linear-gradient(135deg, #ffffff 0%, #fecaca 100%);
+}
+
+.highlight-gradient-yellow {
+  background: linear-gradient(135deg, #ffffff 0%, #fee2e2 100%);
+}
+
+.highlight-gradient-green {
+  background: linear-gradient(135deg, #ffffff 0%, #fecaca 100%);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.highlight-animate {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .highlights-header {
+    margin-bottom: 3rem;
+  }
+  
+  .highlight-card {
+    padding: 1rem;
+  }
+}
+
