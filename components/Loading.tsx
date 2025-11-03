@@ -6,10 +6,9 @@ import './Loading.css'
 
 interface LoadingProps {
   isVisible?: boolean
-  progress?: number
 }
 
-export default function Loading({ isVisible = true, progress = 0 }: LoadingProps) {
+export default function Loading({ isVisible = true }: LoadingProps) {
   return (
     <AnimatePresence>
       {isVisible && (
@@ -49,21 +48,6 @@ export default function Loading({ isVisible = true, progress = 0 }: LoadingProps
                 />
               </motion.div>
             </motion.div>
-
-            {/* Progress Bar */}
-            <div className="progress-bar-container">
-              <div className="progress-bar-track">
-                <motion.div
-                  className="progress-bar-fill"
-                  initial={{ width: '0%' }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                />
-              </div>
-              <div className="progress-percentage">
-                {Math.round(progress)}%
-              </div>
-            </div>
           </div>
         </motion.div>
       )}

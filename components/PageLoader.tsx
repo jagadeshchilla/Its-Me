@@ -8,7 +8,6 @@ import Loading from './Loading'
 export default function PageLoader({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
   const [showContent, setShowContent] = useState(false)
-  const [progress, setProgress] = useState(0)
   const pathname = usePathname()
   const hasShownInitialLoader = useRef(false)
 
@@ -34,32 +33,13 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
 
     // This is initial page load - show loader
     const loadingDuration = 3500
-    const intervalDuration = 50
-    const totalSteps = loadingDuration / intervalDuration
-    
-    let currentStep = 0
-    
-    // Progress bar animation
-    const progressInterval = setInterval(() => {
-      currentStep++
-      const newProgress = Math.min((currentStep / totalSteps) * 100, 100)
-      setProgress(newProgress)
-      
-      if (currentStep >= totalSteps) {
-        clearInterval(progressInterval)
-      }
-    }, intervalDuration)
 
     const handleLoad = () => {
       setTimeout(() => {
-        clearInterval(progressInterval)
-        setProgress(100)
+        setIsLoading(false)
         setTimeout(() => {
-          setIsLoading(false)
-          setTimeout(() => {
-            setShowContent(true)
-          }, 400)
-        }, 200)
+          setShowContent(true)
+        }, 400)
       }, loadingDuration)
     }
 
@@ -72,18 +52,13 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
 
     // Fallback: hide loading after max 4 seconds
     const fallbackTimeout = setTimeout(() => {
-      clearInterval(progressInterval)
-      setProgress(100)
+      setIsLoading(false)
       setTimeout(() => {
-        setIsLoading(false)
-        setTimeout(() => {
-          setShowContent(true)
-        }, 400)
-      }, 200)
+        setShowContent(true)
+      }, 400)
     }, 4000)
 
     return () => {
-      clearInterval(progressInterval)
       window.removeEventListener('load', handleLoad)
       clearTimeout(fallbackTimeout)
     }
@@ -101,7 +76,7 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
 
   return (
     <>
-      <Loading isVisible={isLoading} progress={progress} />
+      <Loading isVisible={isLoading} />
       <AnimatePresence mode="wait">
         {showContent && (
           <motion.div
