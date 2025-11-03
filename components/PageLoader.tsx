@@ -32,8 +32,8 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
     hasShownInitialLoader.current = true
     sessionStorage.setItem('hasVisited', 'true')
 
-    // This is initial page load - show loader
-    const loadingDuration = 3500
+    // This is initial page load - show loader for 4-5 minutes
+    const loadingDuration = 270000 // 4.5 minutes in milliseconds
 
     const handleLoad = () => {
       setTimeout(() => {
@@ -51,13 +51,13 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
       window.addEventListener('load', handleLoad)
     }
 
-    // Fallback: hide loading after max 4 seconds
+    // Fallback: hide loading after max 5 minutes
     const fallbackTimeout = setTimeout(() => {
       setIsLoading(false)
       setTimeout(() => {
         setShowContent(true)
       }, 400)
-    }, 4000)
+    }, 300000) // 5 minutes in milliseconds
 
     return () => {
       window.removeEventListener('load', handleLoad)
@@ -86,7 +86,7 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.2 }}
           >
             {children}
           </motion.div>

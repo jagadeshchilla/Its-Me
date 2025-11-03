@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -8,11 +8,19 @@ export default function NavigationProgressBar() {
   const [isNavigating, setIsNavigating] = useState(false)
   const [progress, setProgress] = useState(0)
   const pathname = usePathname()
+  const isNavigatingRef = useRef(false)
 
   useEffect(() => {
-    // Reset on route change
-    setIsNavigating(false)
-    setProgress(0)
+    // Complete immediately when route changes
+    if (isNavigatingRef.current) {
+      setProgress(100)
+      const timer = setTimeout(() => {
+        setIsNavigating(false)
+        setProgress(0)
+        isNavigatingRef.current = false
+      }, 150)
+      return () => clearTimeout(timer)
+    }
   }, [pathname])
 
   useEffect(() => {
@@ -25,26 +33,27 @@ export default function NavigationProgressBar() {
       
       // Check if it's an internal link and not already on that page
       if (link && link.getAttribute('href') !== pathname) {
+        isNavigatingRef.current = true
         setIsNavigating(true)
-        setProgress(10)
+        setProgress(20)
         
-        // Simulate progress
+        // Simulate quick progress
         progressInterval = setInterval(() => {
           setProgress((prev) => {
             if (prev >= 90) {
               if (progressInterval) clearInterval(progressInterval)
               return 90
             }
-            return Math.min(prev + 15, 90)
+            return Math.min(prev + 20, 90)
           })
-        }, 150)
+        }, 50)
 
-        // Auto-complete after max 2 seconds
+        // Fallback: auto-complete after 500ms max (in case navigation is slow)
         timeoutId = setTimeout(() => {
           setProgress(100)
           if (progressInterval) clearInterval(progressInterval)
-          setTimeout(() => setIsNavigating(false), 200)
-        }, 2000)
+          setTimeout(() => setIsNavigating(false), 100)
+        }, 500)
       }
     }
 

@@ -49,8 +49,8 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[rgba(220,38,38,0.95)] backdrop-blur-md shadow-md border-b border-[rgba(255,255,255,0.3)]'
-          : 'bg-[rgba(220,38,38,0.85)] backdrop-blur-sm'
+          ? 'bg-[rgba(0,0,0,0.95)] backdrop-blur-md shadow-md border-b border-[rgba(255,255,255,0.2)]'
+          : 'bg-[rgba(0,0,0,0.85)] backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,7 +114,7 @@ export default function Navbar() {
                   whileTap={{ scale: 0.95 }}
                   className={`relative px-3 sm:px-4 py-2 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 flex items-center gap-2 ${
                     pathname === '/chatbot'
-                      ? 'bg-white text-red-600 shadow-lg'
+                      ? 'bg-white text-black shadow-lg'
                       : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm border border-white/30'
                   }`}
                 >
