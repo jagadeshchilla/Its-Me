@@ -88,7 +88,7 @@ const competitiveSites = [
 
 export default function EducationPage() {
   return (
-    <main className="min-h-screen" style={{ background: 'linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%)' }}>
+    <main className="min-h-screen" style={{ background: '#000000' }}>
       <Navbar />
       
       {/* Header Section */}

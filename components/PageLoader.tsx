@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import Loading from './Loading'
+import NavigationProgressBar from './NavigationProgressBar'
 
 export default function PageLoader({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
@@ -77,6 +78,7 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
   return (
     <>
       <Loading isVisible={isLoading} />
+      {showContent && <NavigationProgressBar />}
       <AnimatePresence mode="wait">
         {showContent && (
           <motion.div

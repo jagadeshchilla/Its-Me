@@ -2,7 +2,7 @@
 
 .highlights-section {
   position: relative;
-  background: linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%);
+  background: #000000;
   overflow: hidden;
 }
 
@@ -231,7 +231,7 @@
 
 /* Gradient Colors - Red & White Theme */
 .highlight-gradient-purple {
-  background: linear-gradient(135deg, #ffffff 0%, #fee2e2 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
 }
 
 .highlight-gradient-blue {
@@ -239,7 +239,7 @@
 }
 
 .highlight-gradient-yellow {
-  background: linear-gradient(135deg, #ffffff 0%, #fee2e2 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
 }
 
 .highlight-gradient-green {

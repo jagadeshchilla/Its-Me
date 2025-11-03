@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%);
+  background: #000000;
   padding-top: 5rem;
 }
 
@@ -159,7 +159,7 @@
 }
 
 .hero-name-accent {
-  background: linear-gradient(135deg, #ffffff 0%, #fca5a5 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -232,8 +232,8 @@
 }
 
 .hero-btn-primary {
-  background: linear-gradient(135deg, #ffffff 0%, #fee2e2 100%);
-  color: #dc2626;
+  background: #ffffff;
+  color: #000000;
   border: none;
   box-shadow: 0 10px 30px -5px rgba(255, 255, 255, 0.4);
   font-weight: 700;
@@ -308,7 +308,7 @@
   max-width: 500px;
   padding: 0.5rem;
   border-radius: 1.5rem;
-  background: linear-gradient(135deg, #ffffff 0%, #fee2e2 50%, #fca5a5 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #e5e5e5 100%);
   animation: float 6s ease-in-out infinite, borderGlow 3s ease-in-out infinite;
   box-shadow: 0 20px 60px -15px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2);
 }

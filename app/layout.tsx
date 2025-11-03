@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import PageLoader from '@/components/PageLoader'
-import NavigationProgressBar from '@/components/NavigationProgressBar'
 import './globals.css'
 
 const inter = Inter({ 
@@ -33,7 +32,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
-        <NavigationProgressBar />
         <PageLoader>
           {children}
         </PageLoader>
